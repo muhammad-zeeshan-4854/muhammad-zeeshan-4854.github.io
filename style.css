@@ -342,3 +342,19 @@ body, .site-header, .project, .skill, .numbers div, .btn, .node-bg { transition-
   nav a.hide-sm { display: none; }
   .theme-toggle { width: 36px; height: 36px; }
 }
+/* Bar chart visual for the Netflix project */
+.bars-visual { border-radius: 16px; border: 1px solid var(--line); background: var(--code-bg); padding: 28px 18px; }
+.bars-visual svg { width: 100%; height: auto; }
+.bars-visual rect { fill: #E50914; transform-box: fill-box; transform-origin: bottom; }
+.bars-visual rect:nth-of-type(even) { fill: #F2C14E; }
+.project:hover .bars-visual rect { animation: grow .6s ease both; }
+.project:hover .bars-visual rect:nth-of-type(2) { animation-delay: .05s; }
+.project:hover .bars-visual rect:nth-of-type(3) { animation-delay: .1s; }
+.project:hover .bars-visual rect:nth-of-type(4) { animation-delay: .15s; }
+.project:hover .bars-visual rect:nth-of-type(5) { animation-delay: .2s; }
+.project:hover .bars-visual rect:nth-of-type(6) { animation-delay: .25s; }
+.project:hover .bars-visual rect:nth-of-type(7) { animation-delay: .3s; }
+.project:hover .bars-visual rect:nth-of-type(8) { animation-delay: .35s; }
+@keyframes grow { from { transform: scaleY(0.15); } to { transform: scaleY(1); } }
+@media (max-width: 960px) { .project.research .bars-visual { order: -1; } }
+@media (prefers-reduced-motion: reduce) { .project:hover .bars-visual rect { animation: none; } }
