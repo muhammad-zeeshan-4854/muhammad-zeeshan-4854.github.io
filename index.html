@@ -15,7 +15,7 @@
        "dark", "light", or "system" (follows the visitor's phone/computer setting).
        If a visitor uses the toggle, their choice is remembered on their device. -->
   <script>
-    window.DEFAULT_THEME = "light";
+    window.DEFAULT_THEME = "system";
     (function () {
       var saved = null;
       try { saved = localStorage.getItem("theme"); } catch (e) {}
