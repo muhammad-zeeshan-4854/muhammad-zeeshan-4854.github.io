@@ -342,6 +342,7 @@ body, .site-header, .project, .skill, .numbers div, .btn, .node-bg { transition-
   nav a.hide-sm { display: none; }
   .theme-toggle { width: 36px; height: 36px; }
 }
+
 /* Bar chart visual for the Netflix project */
 .bars-visual { border-radius: 16px; border: 1px solid var(--line); background: var(--code-bg); padding: 28px 18px; }
 .bars-visual svg { width: 100%; height: auto; }
