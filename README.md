@@ -1,43 +1,77 @@
-# Muhammad Zeeshan | Portfolio
+# Netflix Content Explorer
 
-Personal portfolio of Muhammad Zeeshan, Full Stack Software Engineer (C#, .NET, Angular, SQL Server).
+An interactive Streamlit dashboard for exploring the Netflix catalogue: what's on the platform, where it comes from, and how it has grown over time. It is built on the [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows) dataset from Kaggle.
 
-**Live site:** https://muhammad-zeeshan-4854.github.io
+**Live demo:** https://netflix-dashboard-1jo2.onrender.com (hosted on Render's free plan, so the first load after a quiet period can take up to a minute)
 
-## Highlights
+<!-- Add a screenshot of the dashboard here, saved as docs/dashboard.png:
+![Netflix Content Explorer](docs/dashboard.png) -->
 
-- **Integration hub hero:** an animated SVG diagram of the eight verification services I have integrated (DBS, DVLA, Passport, IDVT, Konfir and more), each connecting and verifying in turn.
-- **Dark and light themes** with a toggle. The visitor's choice is remembered, and the default can follow their system setting.
-- **Scroll-driven experience timeline** that fills as you read, plus count-up highlight numbers.
-- **Responsive and accessible:** works from small phones to wide screens, supports keyboard navigation and respects reduced-motion preferences.
-- **No frameworks or build step:** plain HTML, CSS and JavaScript, hosted for free on GitHub Pages.
+## Features
 
-## Tech
+- **Filters** for type, year added, release year, genres, countries, ratings and a free-text search across title, director and cast. Every chart and number updates instantly.
+- **Six views:** an overview with yearly growth, a month-by-year heatmap and the movie / TV show split; an interactive world map and top countries; genres, ratings, movie lengths and TV seasons; top directors and cast; a data cleaning report; and a searchable table of titles.
+- **Live key findings** written in plain English and recalculated for whatever is currently selected, rather than hard-coded.
+- **Data cleaning report** showing every problem found in the raw file and how it was fixed, with missing values before and after.
+- **CSV export** of the filtered titles.
+- **Friendly file handling:** if the dataset is missing, the app explains where to put it and offers an upload button, instead of crashing.
 
-HTML5, CSS3 (custom properties, grid, flexbox), vanilla JavaScript (SVG generation, IntersectionObserver), GitHub Pages.
+## How the data is cleaned
+
+| Problem in the raw data | Fix |
+|---|---|
+| Duplicate rows | Removed |
+| Durations such as "74 min" stored in the `rating` column | Moved to `duration`, rating refilled |
+| Missing `country` | Filled from the same director's other titles, otherwise "Unknown" |
+| Missing `director` / `cast` | Marked "Unknown", since they can't be guessed |
+| Missing `rating` | Most common rating for that content type |
+| `date_added` as text with stray spaces and mixed formats | Stripped and parsed to dates |
+| A few rows with no usable date or duration | Dropped |
+
+New columns are derived for analysis: `year_added`, `month_added`, `duration_value`, `duration_unit`, `main_country` and `years_to_netflix`.
+
+## Run it locally
+
+```bash
+git clone https://github.com/muhammad-zeeshan-4854/netflix-dashboard.git
+cd netflix-dashboard
+python -m venv .venv
+.venv\Scripts\activate          # macOS / Linux: source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Download `netflix_titles.csv` from Kaggle and put it in the `data/` folder, or upload it from the app.
+
+## Deploy for free
+
+The live demo runs on [Render](https://render.com) as a free web service:
+
+- **Build command:** `pip install -r requirements.txt`
+- **Start command:** `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`
+- **Environment variable:** `PYTHON_VERSION` = `3.12.10`
+
+It also works on [Streamlit Community Cloud](https://share.streamlit.io): select this repository and set the main file to `app.py`.
 
 ## Project structure
 
-| File | Purpose |
-|---|---|
-| `index.html` | All page content |
-| `style.css` | Styles. Theme colours and fonts are defined at the top in `:root`, with the light theme under `:root[data-theme="light"]` |
-| `script.js` | Integration hub, theme toggle, scroll timeline, counters and the copy-email button |
-| `assets/` | Profile photo, project screenshots, favicon and CV |
+```
+app.py                       Streamlit dashboard
+netflix_analysis/
+  cleaning.py                cleaning pipeline and cleaning report
+  filters.py                 filtering logic and live insights
+  charts.py                  Plotly charts with a shared theme
+tests/                       pytest tests for cleaning, filters and the app itself
+.streamlit/config.toml       dark theme
+```
 
-## Run locally
+The cleaning and filtering logic lives outside `app.py`, so it is tested independently of the UI:
 
-Open `index.html` in a browser, or use the **Live Server** extension in VS Code for automatic reloads while editing.
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
 
-## Customising
+## Tech
 
-- **Content:** search `index.html` for `EDIT` to find the parts meant to be changed.
-- **Default theme:** set `window.DEFAULT_THEME` in the `<head>` of `index.html` to `"dark"`, `"light"` or `"system"`.
-- **Services in the hero:** edit the `SERVICES` list at the top of `script.js`.
-- **Profile photo:** replace `assets/profile.jpg` with a square image of at least 400 × 400 px. If the file is missing, the initials "MZ" are shown instead.
-- **New project:** copy an `<article class="project">` block in the Projects section and update the text and screenshot.
-
-## Contact
-
-- Email: Zeeshanali4854@gmail.com
-- LinkedIn: [muhammad-zeeshan-299a05147](https://www.linkedin.com/in/muhammad-zeeshan-299a05147)
+Python, pandas, NumPy, Plotly, Streamlit, pytest.
