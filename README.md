@@ -2,7 +2,7 @@
 
 An interactive Streamlit dashboard for exploring the Netflix catalogue: what's on the platform, where it comes from, and how it has grown over time. It is built on the [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows) dataset from Kaggle.
 
-**Live demo:** https://netflix-dashboard-1jo2.onrender.com (hosted on Render's free plan, so the first load after a quiet period can take up to a minute)
+**Live demo:** https://netflix-dashboard-ljo2.onrender.com (hosted on Render's free plan, so the first load after a quiet period can take up to a minute)
 
 <!-- Add a screenshot of the dashboard here, saved as docs/dashboard.png:
 ![Netflix Content Explorer](docs/dashboard.png) -->
