@@ -174,6 +174,41 @@
     <h2 class="section-title">Projects</h2>
 
     <div class="projects">
+      <article class="project research">
+        <div class="bars-visual" aria-hidden="true">
+          <!-- InvoiceHub: a simple invoice sketch (header, line items, total) -->
+          <svg viewBox="0 0 400 160">
+            <path class="ecg-grid" d="M0 40H400M0 80H400M0 120H400"/>
+            <rect x="120" y="14" width="160" height="22" rx="4"/>
+            <rect x="120" y="50" width="110" height="10" rx="3"/>
+            <rect x="244" y="50" width="36" height="10" rx="3"/>
+            <rect x="120" y="70" width="110" height="10" rx="3"/>
+            <rect x="244" y="70" width="36" height="10" rx="3"/>
+            <rect x="120" y="90" width="110" height="10" rx="3"/>
+            <rect x="244" y="90" width="36" height="10" rx="3"/>
+            <rect x="200" y="118" width="80" height="22" rx="4"/>
+          </svg>
+        </div>
+        <div class="project-text">
+          <p class="kind">Personal project · SaaS</p>
+          <h3>InvoiceHub</h3>
+          <p>A multi-tenant invoicing SaaS I'm building for UK freelancers and small businesses. Each business gets its own isolated workspace to manage customers, raise VAT-correct invoices, email them as PDFs and track what's paid, outstanding and overdue.</p>
+          <ul class="facts">
+            <li>Multi-tenant architecture: one PostgreSQL database, with EF Core global query filters and save-time guards so no organisation can read or change another's data, proven by integration tests</li>
+            <li>Owner, Admin and Member roles, email verification, password reset, and step-up re-authentication with a separate short-lived token before sensitive screens</li>
+            <li>Server-side UK VAT per line, invoice status workflow, PDF generation with QuestPDF and invoice emails through each organisation's own SMTP account</li>
+            <li>Per-organisation Stripe and SMTP integrations with secrets encrypted using AES-256-GCM, plus "test connection" checks</li>
+            <li>Customer-facing audit log and a developer-only, append-only tracking table protected by PostgreSQL triggers</li>
+            <li>Angular 21 dashboard with Angular Material and ApexCharts: aging report, revenue chart, onboarding checklist, activity feed</li>
+            <li>48 xUnit test methods, GitHub Actions CI, EF Core migrations generated in CI, and Docker deployment</li>
+          </ul>
+          <ul class="chips"><li>C#</li><li>ASP.NET Core 8</li><li>EF Core</li><li>PostgreSQL</li><li>Angular</li><li>Angular Material</li><li>xUnit</li><li>Docker</li><li>GitHub Actions</li></ul>
+          <!-- EDIT: to show a screenshot, replace the invoice sketch above with:
+          <img src="assets/invoicehub.png" alt="InvoiceHub dashboard" loading="lazy">
+          and add a link if you make the repo public or deploy a demo. -->
+        </div>
+      </article>
+
       <article class="project featured">
         <a class="browser" href="https://github.com/muhammad-zeeshan-4854/jobradar" target="_blank" rel="noopener">
           <span class="browser-bar"><i></i><i></i><i></i><span>localhost:8000</span></span>
@@ -190,35 +225,6 @@
           </ul>
           <ul class="chips"><li>Python</li><li>Flask</li><li>SQLite</li><li>GitHub Actions</li><li>Docker</li></ul>
           <a class="btn btn-solid" href="https://github.com/muhammad-zeeshan-4854/jobradar" target="_blank" rel="noopener">View code</a>
-        </div>
-      </article>
-
-      <article class="project research">
-        <div class="bars-visual" aria-hidden="true">
-          <!-- A simple invoice sketch: header block, line items and a total -->
-          <svg viewBox="0 0 400 160">
-            <path class="ecg-grid" d="M0 40H400M0 80H400M0 120H400"/>
-            <rect x="120" y="14" width="160" height="22" rx="4"/>
-            <rect x="120" y="50" width="110" height="10" rx="3"/>
-            <rect x="244" y="50" width="36" height="10" rx="3"/>
-            <rect x="120" y="70" width="110" height="10" rx="3"/>
-            <rect x="244" y="70" width="36" height="10" rx="3"/>
-            <rect x="120" y="90" width="110" height="10" rx="3"/>
-            <rect x="244" y="90" width="36" height="10" rx="3"/>
-            <rect x="200" y="118" width="80" height="22" rx="4"/>
-          </svg>
-        </div>
-        <div class="project-text">
-          <p class="kind">Personal project</p>
-          <h3>Invoicing Application</h3>
-          <p>A full stack invoicing application to create, manage and track client invoices, built in ASP.NET Core and C#.</p>
-          <ul class="facts">
-            <li>Layered architecture following SOLID principles</li>
-            <li>RESTful APIs for invoice and client data</li>
-          </ul>
-          <ul class="chips"><li>C#</li><li>ASP.NET Core</li><li>REST APIs</li></ul>
-          <!-- EDIT: add your GitHub link when the repo is public, e.g.
-          <a class="btn btn-solid" href="https://github.com/muhammad-zeeshan-4854/YOUR-REPO" target="_blank" rel="noopener">View code</a> -->
         </div>
       </article>
 
