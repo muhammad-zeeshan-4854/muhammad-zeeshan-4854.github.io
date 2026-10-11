@@ -10,13 +10,15 @@ const PROFILE_PHOTO = "assets/profile.jpg";
    EDIT: these are the services shown around you in the hero. */
 const SERVICES = [
   { label: "DBS", title: "Disclosure and Barring Service" },
+  { label: "iCover", title: "International background checks" },
+  { label: "NetForce", title: "Verification service" },
+  { label: "TrustID", title: "Identity document and right to work checks" },
+  { label: "ID3Global", title: "Identity verification" },
   { label: "DVLA", title: "Driving licence checks" },
-  { label: "Passport", title: "Passport verification" },
-  { label: "IDVT", title: "Identity document validation" },
   { label: "Konfir", title: "Employment and income verification" },
-  { label: "Global", title: "Global checks" },
-  { label: "Reference", title: "References module" },
-  { label: "Social", title: "Social media screening" },
+  { label: "Mistho", title: "Employment history verification" },
+  { label: "Yoti", title: "Digital identity verification" },
+  { label: "FAMA", title: "Social media screening" },
 ];
 
 (function buildHub() {
