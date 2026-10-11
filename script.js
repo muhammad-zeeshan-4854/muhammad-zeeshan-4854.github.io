@@ -4,7 +4,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
    EDIT: put your photo in the assets folder with this name.
    A square photo of at least 400 x 400 px works best. If the file is missing,
    "MZ" is shown instead. */
-const PROFILE_PHOTO = "assets/profile.jpg";
+const PROFILE_PHOTO = "assets/profile.png";
 
 /* ===== Integration hub =====
    EDIT: these are the services shown around you in the hero. */
